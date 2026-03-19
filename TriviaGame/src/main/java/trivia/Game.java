@@ -7,9 +7,9 @@ public class Game implements IGame {
     private final Map<String, LinkedList<String>> questionsByCategory = new HashMap<>();
     private int currentPlayerIndex = 0;
     private boolean isGettingOutOfPenaltyBox;
-
+    public boolean gameStarted = false;
     public Game() {
-        String[] categories = {"Pop", "Science", "Sports", "Rock"};
+        String[] categories = {"Pop", "Science", "Sports", "Rock","Géographie"};
         for (String category : categories) {
             LinkedList<String> questions = new LinkedList<>();
             for (int i = 0; i < 50; i++) {
@@ -20,6 +20,10 @@ public class Game implements IGame {
     }
 
     public boolean add(String playerName) {
+        if(gameStarted){
+            System.out.println("Cannot add player " + playerName + " because the game has already started");
+            return false;
+        }
         players.add(new Player(playerName));
         System.out.println(playerName + " was added");
         System.out.println("They are player number " + players.size());
@@ -58,13 +62,9 @@ public class Game implements IGame {
     }
 
     String currentCategory(int place) {
-        int categoryIndex = (place - 1) % 4;
-        return switch (categoryIndex) {
-            case 0 -> "Pop";
-            case 1 -> "Science";
-            case 2 -> "Sports";
-            default -> "Rock";
-        };
+        String[] categories = {"Pop", "Science", "Sports", "Rock", "Géographie"};
+        int categoryIndex = (place - 1) % categories.length;
+        return categories[categoryIndex];
     }
 
     public boolean handleCorrectAnswer() {
@@ -118,4 +118,7 @@ public class Game implements IGame {
         isGettingOutOfPenaltyBox = gettingOutOfPenaltyBox;
     }
 
+    public void setGameStarted(boolean gameStarted) {
+        this.gameStarted = gameStarted;
+    }
 }

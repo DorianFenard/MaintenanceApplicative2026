@@ -80,4 +80,10 @@ class NewGameTest {
         game.roll(1);
         assertEquals("Sports", game.currentCategory(game.getPlayers().get(0).getPlace()));
     }
+    @Test
+    void addPlayerAfterGameStarted() {
+        game.setGameStarted(true);
+        boolean result = game.add("New Player");
+        assertFalse(result, "Should not allow adding players after the game has started");
+    }
 }

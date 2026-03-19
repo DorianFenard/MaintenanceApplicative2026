@@ -160,8 +160,13 @@ public class GameOld implements IGame {
       return true;
    }
 
+    @Override
+    public void setGameStarted(boolean gameStarted) {
 
-   private boolean didPlayerWin() {
+    }
+
+
+    private boolean didPlayerWin() {
       return !(purses[currentPlayer] == 6);
    }
 }
