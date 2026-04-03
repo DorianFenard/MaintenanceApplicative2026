@@ -1,9 +1,12 @@
+import oldCalandar.CalendarManager;
+import oldCalandar.Event;
+
 import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CalandarTest {
+public class CalandarTestOld {
 
     @Test
     public void testDisplayEventsEmptyList() {
