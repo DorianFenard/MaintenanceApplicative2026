@@ -41,4 +41,9 @@ public final class Reunion extends Event {
     public Periode occupation() {
         return new Periode(dateDebut(), duree.ajouterA(dateDebut()));
     }
+
+    @Override
+    public <T> T accept(EventVisitor<T> visitor) {
+        return visitor.visitReunion(this);
+    }
 }

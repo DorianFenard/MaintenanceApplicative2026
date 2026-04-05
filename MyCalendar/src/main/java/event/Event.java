@@ -37,6 +37,8 @@ public abstract class Event {
 
     public abstract Periode occupation();
 
+    public abstract <T> T accept(EventVisitor<T> visitor);
+
     public boolean estEnConflitAvec(Event autre) {
         return occupation().chevauche(autre.occupation());
     }

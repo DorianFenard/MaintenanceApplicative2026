@@ -2,11 +2,11 @@ package event;
 
 import valueobject.*;
 
-public final class RDVPerso extends Event {
+public final class RendezVousPersonnel extends Event {
     private final DureeEvenement duree;
 
-    public RDVPerso(EventId id, TitreEvenement titre, Proprietaire proprietaire,
-                    DateEvenement dateDebut, DureeEvenement duree) {
+    public RendezVousPersonnel(EventId id, TitreEvenement titre, Proprietaire proprietaire,
+                                DateEvenement dateDebut, DureeEvenement duree) {
         super(id, titre, proprietaire, dateDebut);
         this.duree = duree;
     }
@@ -32,6 +32,6 @@ public final class RDVPerso extends Event {
 
     @Override
     public <T> T accept(EventVisitor<T> visitor) {
-        return null;
+        return visitor.visitRendezVous(this);
     }
 }
